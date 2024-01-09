@@ -173,6 +173,23 @@ type ReceiveMessageInput struct {
 	// for synchronous clients.
 	WaitTimeSeconds int32
 
+	// MessageSystemAttributeNames include:
+	// 	- All – Returns all values.
+	// 	- ApproximateFirstReceiveTimestamp – Returns the time the message was first received from the queue (epoch time in milliseconds).
+	// 	- ApproximateReceiveCount – Returns the number of times a message has been received across all queues but not deleted.
+	// 	- AWSTraceHeader – Returns the AWS X-Ray trace header string.
+	// 	- SenderId
+	// 		- For a user, returns the user ID, for example ABCDEFGHI1JKLMNOPQ23R.
+	// 		- For an IAM role, returns the IAM role ID, for example ABCDE1F2GH3I4JK5LMNOP:i-a123b456.
+	// 	- SentTimestamp – Returns the time the message was sent to the queue (epoch time in milliseconds).
+	// 	- SqsManagedSseEnabled – Enables server-side queue encryption using SQS owned encryption keys. Only one server-side encryption option is supported per queue (for example, SSE-KMS or SSE-SQS).
+	// 	- MessageDeduplicationId – Returns the value provided by the producer that calls the SendMessage action.
+	// 	- MessageGroupId – Returns the value provided by the producer that calls the SendMessage action. Messages with the same MessageGroupId are returned in sequence.
+	// 	- SequenceNumber – Returns the value provided by Amazon SQS.
+	// for details you can visit https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ReceiveMessage.html
+	MessageSystemAttributeName []string
+
+
 	noSmithyDocumentSerde
 }
 
